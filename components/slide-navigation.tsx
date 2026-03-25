@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -21,10 +22,22 @@ export function SlideNavigation({
   return (
     <>
       {/* Top Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12">
-        <div className="text-sm font-medium tracking-widest text-foreground uppercase">
-          T40
-        </div>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 bg-gradient-to-b from-background/80 to-transparent">
+        <button 
+          onClick={() => onNavigate(0)}
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+        >
+          <Image
+            src="/images/logo.jpg"
+            alt="Tales for the Tillerman Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
+          <span className="hidden sm:block text-sm font-medium tracking-widest text-foreground uppercase">
+            T40
+          </span>
+        </button>
 
         <div className="hidden md:flex items-center gap-8">
           {slides.map((slide, index) => (
