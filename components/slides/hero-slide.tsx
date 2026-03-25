@@ -25,20 +25,21 @@ export function HeroSlide({ onNext }: HeroSlideProps) {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-4xl mx-auto">
-        {/* Animated Banner */}
-        <div className="mb-6 md:mb-10 w-full max-w-2xl lg:max-w-3xl">
-          <Image
-            src="/images/banner.gif"
-            alt="Tales for the Tillerman"
-            width={1200}
-            height={400}
-            className="w-full h-auto"
-            unoptimized
-            priority
-          />
-        </div>
+        <p className="text-xs md:text-sm font-medium tracking-[0.3em] text-primary uppercase mb-4 md:mb-6">
+          Press Kit
+        </p>
 
-        <p className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed">
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-foreground mb-4 text-balance">
+          Tales for the
+          <br />
+          Tillerman
+        </h1>
+
+        <p className="text-lg md:text-xl text-muted-foreground tracking-wider mb-2">
+          (T40)
+        </p>
+
+        <p className="text-sm md:text-base text-muted-foreground max-w-md mt-4 leading-relaxed">
           An eclectic blend of jazz, pop, ska, reggae, soul, and rock from Berlin
         </p>
 
