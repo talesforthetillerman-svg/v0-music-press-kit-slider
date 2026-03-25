@@ -34,21 +34,21 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-5xl mx-auto">
-        {/* Animated Banner GIF */}
-        <div className="w-full max-w-3xl lg:max-w-4xl mb-6 animate-fade-in-up">
+      <div className="relative z-10 flex flex-col items-center text-center w-full">
+        {/* Animated Banner GIF - Full Width */}
+        <div className="w-full mb-6 animate-fade-in-up">
           <Image
             src="/images/banner.gif"
             alt="Tales for the Tillerman"
-            width={1200}
-            height={400}
-            className="w-full h-auto"
+            width={1920}
+            height={500}
+            className="w-full h-auto object-cover"
             unoptimized
             priority
           />
         </div>
 
-        <p className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed animate-fade-in-up animation-delay-100">
+        <p className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed animate-fade-in-up animation-delay-100 px-6">
           An eclectic blend of jazz, pop, ska, reggae, soul, and rock from Berlin
         </p>
 

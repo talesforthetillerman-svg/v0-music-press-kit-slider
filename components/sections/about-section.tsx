@@ -74,11 +74,12 @@ export function AboutSection() {
           {/* Image with Parallax */}
           <div 
             ref={parallaxRef as React.RefObject<HTMLDivElement>}
-            className="relative h-[300px] md:h-[400px] lg:h-[500px] order-1 lg:order-2 overflow-hidden"
+            className="relative order-1 lg:order-2 overflow-hidden"
+            style={{ height: '300px', minHeight: '300px' }}
           >
             <div 
-              className="absolute inset-0 h-full w-full"
-              style={{ transform: `translateY(${offset}px)` }}
+              className="absolute inset-0"
+              style={{ transform: `translateY(${offset}px)`, height: '100%', width: '100%' }}
             >
               <Image
                 src="/images/band-hero.jpg"
@@ -86,7 +87,7 @@ export function AboutSection() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover scale-110"
-                priority
+                loading="eager"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent lg:block hidden" />
