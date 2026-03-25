@@ -74,7 +74,7 @@ export function AboutSection() {
           {/* Image with Parallax */}
           <div 
             ref={parallaxRef as React.RefObject<HTMLDivElement>}
-            className="relative min-h-[300px] h-64 lg:h-[500px] order-1 lg:order-2 overflow-hidden"
+            className="relative h-[300px] md:h-[400px] lg:h-[500px] order-1 lg:order-2 overflow-hidden"
           >
             <div 
               className="absolute inset-0 h-full w-full"
@@ -86,6 +86,7 @@ export function AboutSection() {
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover scale-110"
+                priority
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent lg:block hidden" />

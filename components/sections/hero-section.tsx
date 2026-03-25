@@ -34,22 +34,21 @@ export function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-4xl mx-auto">
-        <p className="text-xs md:text-sm font-medium tracking-[0.3em] text-primary uppercase mb-4 md:mb-6 animate-fade-in-up">
-          Press Kit
-        </p>
+      <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-5xl mx-auto">
+        {/* Animated Banner GIF */}
+        <div className="w-full max-w-3xl lg:max-w-4xl mb-6 animate-fade-in-up">
+          <Image
+            src="/images/banner.gif"
+            alt="Tales for the Tillerman"
+            width={1200}
+            height={400}
+            className="w-full h-auto"
+            unoptimized
+            priority
+          />
+        </div>
 
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold tracking-tight text-foreground mb-4 text-balance animate-fade-in-up animation-delay-100">
-          Tales for the
-          <br />
-          Tillerman
-        </h1>
-
-        <p className="text-lg md:text-xl text-muted-foreground tracking-wider mb-2 animate-fade-in-up animation-delay-200">
-          (T40)
-        </p>
-
-        <p className="text-sm md:text-base text-muted-foreground max-w-md mt-4 leading-relaxed animate-fade-in-up animation-delay-300">
+        <p className="text-sm md:text-base text-muted-foreground max-w-md leading-relaxed animate-fade-in-up animation-delay-100">
           An eclectic blend of jazz, pop, ska, reggae, soul, and rock from Berlin
         </p>
 
