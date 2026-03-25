@@ -26,14 +26,15 @@ export function HeroSlide({ onNext }: HeroSlideProps) {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 max-w-4xl mx-auto">
         {/* Animated Banner */}
-        <div className="mb-6 md:mb-10 w-full max-w-xl">
+        <div className="mb-6 md:mb-10 w-full max-w-2xl lg:max-w-3xl">
           <Image
             src="/images/banner.gif"
             alt="Tales for the Tillerman"
-            width={800}
-            height={300}
+            width={1200}
+            height={400}
             className="w-full h-auto"
             unoptimized
+            priority
           />
         </div>
 
