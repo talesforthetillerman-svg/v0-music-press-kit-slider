@@ -370,43 +370,13 @@
     </div>
     
     <script>
-        // Band members data
+        // Band members data - solo nombres, sin fotos (las fotos no existen)
         const members = [
-            {
-                id: 'janosch-puhe',
-                name: 'Janosch Puhe',
-                role: 'Guitar & Vocals',
-                avatar: 'images/members/janosch-puhe.jpg',
-                fullImage: 'images/members/janosch-puhe.jpg'
-            },
-            {
-                id: 'jma-garcia-lopez',
-                name: 'J.M. García López',
-                role: 'Piano, Flute & Vocals',
-                avatar: 'images/members/jma-garcia-lopez.jpg',
-                fullImage: 'images/members/jma-garcia-lopez.jpg'
-            },
-            {
-                id: 'otto-herrmann',
-                name: 'Otto Herrmann',
-                role: 'Bass',
-                avatar: 'images/members/otto-herrmann.jpg',
-                fullImage: 'images/members/otto-herrmann.jpg'
-            },
-            {
-                id: 'robi-schmidt',
-                name: 'Robi Schmidt',
-                role: 'Drums',
-                avatar: 'images/members/robi-schmidt.jpg',
-                fullImage: 'images/members/robi-schmidt.jpg'
-            },
-            {
-                id: 'tarik-al-saadi',
-                name: 'Tarik Al-Saadi',
-                role: 'Percussion',
-                avatar: 'images/members/tarik-al-saadi.jpg',
-                fullImage: 'images/members/tarik-al-saadi.jpg'
-            }
+            { name: 'Janosch Puhe', role: 'Guitar & Vocals' },
+            { name: 'J.M. García López', role: 'Piano, Flute & Vocals' },
+            { name: 'Otto Herrmann', role: 'Bass' },
+            { name: 'Robi Schmidt', role: 'Drums' },
+            { name: 'Tarik Al-Saadi', role: 'Percussion' }
         ];
         
         // DOM elements
@@ -417,62 +387,21 @@
         const modalRole = document.getElementById('modalRole');
         const closeModal = document.getElementById('closeModal');
         
-        // Render members grid
+        // Render members grid - solo texto
         function renderMembers() {
             membersGrid.innerHTML = '';
             members.forEach(member => {
                 const card = document.createElement('div');
                 card.className = 'member-card';
                 card.innerHTML = `
-                    <img src="${member.avatar}" alt="${member.name}" class="member-avatar">
+                    <div style="width: 120px; height: 120px; border-radius: 50%; background: #f0f0f0; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👤</div>
                     <h3 class="member-name">${member.name}</h3>
                     <p class="member-role">${member.role}</p>
                 `;
-                card.addEventListener('click', () => openModal(member));
                 membersGrid.appendChild(card);
             });
         }
         
-        // Open modal with member photo
-        function openModal(member) {
-            modalImage.src = member.fullImage;
-            modalImage.alt = member.name;
-            modalName.textContent = member.name;
-            modalRole.textContent = member.role;
-            memberModal.classList.add('active');
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Close modal
-        function closeMemberModal() {
-            memberModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-        
-        // Event listeners
-        closeModal.addEventListener('click', closeMemberModal);
-        memberModal.addEventListener('click', (e) => {
-            if (e.target === memberModal) {
-                closeMemberModal();
-            }
-        });
-        
-        // Close modal on ESC key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && memberModal.classList.contains('active')) {
-                closeMemberModal();
-            }
-        });
-        
-        // Close modal on scroll (as requested)
-        let scrollTimeout;
-        window.addEventListener('scroll', () => {
-            if (memberModal.classList.contains('active')) {
-                clearTimeout(scrollTimeout);
-                scrollTimeout = setTimeout(closeMemberModal, 100);
-            }
-        });
-        
-        //
+        // Initialize
+        renderMembers();
+    </script>
