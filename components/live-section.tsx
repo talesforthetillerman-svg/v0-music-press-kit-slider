@@ -15,7 +15,7 @@ export function LiveSection() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1, rootMargin: "-50px" }
     )
 
     if (sectionRef.current) {
@@ -33,10 +33,16 @@ export function LiveSection() {
       const windowHeight = window.innerHeight
       const sectionHeight = rect.height
 
-      // Calculate how much of the section is visible
       const visibleTop = Math.max(0, -rect.top)
-      const progress = Math.min(1, visibleTop / (sectionHeight - windowHeight))
-
+      const denominator = sectionHeight - windowHeight
+      
+      // Prevent division by zero or negative values
+      if (denominator <= 0) {
+        setScrollProgress(0)
+        return
+      }
+      
+      const progress = Math.min(1, visibleTop / denominator)
       setScrollProgress(Math.max(0, Math.min(1, progress)))
     }
 
@@ -69,16 +75,16 @@ export function LiveSection() {
     <section
       id="live"
       ref={sectionRef}
-      className="relative min-h-screen flex items-center"
+      className="relative min-h-screen flex items-center py-28 md:py-40"
     >
-      {/* Background Image with Parallax */}
+      {/* Background Image with Slower Parallax */}
       <div className="absolute inset-0 z-0">
         <div
           style={{
-            transform: `scale(${1 + scrollProgress * 0.1})`,
-            opacity: 1 - scrollProgress * 0.3,
+            transform: `scale(${1 + scrollProgress * 0.08})`,
+            opacity: 1 - scrollProgress * 0.2,
           }}
-          className="absolute inset-0 transition-transform duration-100"
+          className="absolute inset-0 transition-transform duration-200"
         >
           <Image
             src="/images/live-section.jpg"
@@ -87,26 +93,26 @@ export function LiveSection() {
             className="object-cover"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-card via-background/80 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-card via-background/85 to-background" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full py-24 md:py-32">
+      <div className="relative z-10 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
             <div
-              className={`transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+              className={`transition-all duration-1000 ease-out ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
               }`}
             >
               <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
                 Experience
               </span>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 text-balance">
+              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
                 Live Performances
               </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+              <p className="text-muted-foreground leading-relaxed mb-10 text-lg">
                 From intimate club shows to festival main stages, Tales for the Tillerman 
                 delivers an unforgettable live experience. The energy, the groove, and 
                 the connection with the audience create moments that stay with you long 
@@ -121,7 +127,7 @@ export function LiveSection() {
                     href={platform.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center gap-3 px-5 py-3 bg-secondary border border-border rounded-lg text-foreground transition-all duration-300 hover:border-transparent hover:text-white ${platform.color}`}
+                    className={`flex items-center gap-3 px-6 py-4 bg-secondary border border-border rounded-xl text-foreground transition-all duration-300 hover:border-transparent hover:text-white hover:scale-105 ${platform.color}`}
                   >
                     <platform.icon />
                     <span className="font-medium">{platform.name}</span>
@@ -132,8 +138,8 @@ export function LiveSection() {
 
             {/* Banner GIF */}
             <div
-              className={`transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+              className={`transition-all duration-1000 delay-300 ease-out ${
+                isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"
               }`}
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">

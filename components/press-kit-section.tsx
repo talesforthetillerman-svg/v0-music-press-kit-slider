@@ -14,7 +14,7 @@ export function PressKitSection() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15, rootMargin: "-50px" }
     )
 
     if (sectionRef.current) {
@@ -26,17 +26,10 @@ export function PressKitSection() {
 
   const resources = [
     {
-      title: "Full Press Kit",
-      description: "Photos, bio, tech rider, and more",
-      icon: FolderIcon,
-      href: "https://drive.google.com/drive/folders/1opYzf-h9UcNptgOeoGEchdkd0VkqYJPH?usp=drive_link",
-      primary: true,
-    },
-    {
       title: "Band Logo",
       description: "High-resolution logo files",
       icon: ImageIcon,
-      href: "/images/logo.jpg",
+      href: "/images/logo-transparent.png",
       download: true,
     },
     {
@@ -58,64 +51,67 @@ export function PressKitSection() {
     <section
       id="press-kit"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-background relative"
+      className="py-28 md:py-40 bg-background relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+      {/* Background image with low opacity */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/press-section.png"
+          alt=""
+          fill
+          className="object-cover opacity-10"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header - More prominent */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`text-center mb-16 transition-all duration-700 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             Media Resources
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-4 text-balance">
-            Press Kit
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
+            Professional Press Materials
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Everything you need for press coverage, event promotion, and booking information.
           </p>
         </div>
 
-        {/* Press Kit Preview Image */}
+        {/* Main Download CTA - Much more prominent */}
         <div
-          className={`mb-16 transition-all duration-700 delay-100 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`mb-16 transition-all duration-700 delay-200 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          <div className="relative aspect-[21/9] rounded-2xl overflow-hidden img-hover-zoom">
-            <Image
-              src="/images/press-section.png"
-              alt="Tales for the Tillerman Press Kit"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
-            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between">
-              <div>
-                <h3 className="font-serif text-xl md:text-2xl text-foreground">
-                  Professional Press Materials
-                </h3>
-                <p className="text-muted-foreground text-sm mt-1">
-                  High-quality photos, biography, and technical requirements
-                </p>
-              </div>
-              <a
-                href="https://drive.google.com/drive/folders/1opYzf-h9UcNptgOeoGEchdkd0VkqYJPH?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-              >
-                <DownloadIcon />
-                Download Kit
-              </a>
+          <div className="bg-card border border-border rounded-3xl p-8 md:p-12 text-center">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/20 flex items-center justify-center">
+              <FolderIcon className="w-10 h-10 text-primary" />
             </div>
+            <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-3">
+              Complete Press Kit
+            </h3>
+            <p className="text-muted-foreground max-w-lg mx-auto mb-8">
+              Download our full press kit including high-quality photos, biography, technical rider, and more.
+            </p>
+            <a
+              href="https://drive.google.com/drive/folders/1opYzf-h9UcNptgOeoGEchdkd0VkqYJPH?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-primary-foreground rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/25"
+            >
+              <DownloadIcon className="w-6 h-6" />
+              Download Kit
+            </a>
           </div>
         </div>
 
-        {/* Resources Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Additional Resources Grid */}
+        <div className="grid sm:grid-cols-3 gap-6">
           {resources.map((resource, index) => (
             <a
               key={resource.title}
@@ -123,18 +119,12 @@ export function PressKitSection() {
               target={resource.download ? undefined : "_blank"}
               rel={resource.download ? undefined : "noopener noreferrer"}
               download={resource.download}
-              className={`group p-6 bg-card rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              className={`group p-6 bg-card rounded-2xl border border-border hover:border-primary/50 transition-all duration-500 hover:scale-[1.02] ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
               }`}
-              style={{ transitionDelay: `${200 + index * 100}ms` }}
+              style={{ transitionDelay: `${400 + index * 100}ms` }}
             >
-              <div
-                className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${
-                  resource.primary
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-muted-foreground group-hover:text-foreground"
-                }`}
-              >
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-secondary text-muted-foreground group-hover:text-foreground transition-colors">
                 <resource.icon />
               </div>
               <h3 className="font-medium text-foreground mb-1">{resource.title}</h3>
@@ -147,9 +137,9 @@ export function PressKitSection() {
   )
 }
 
-function FolderIcon() {
+function FolderIcon({ className }: { className?: string }) {
   return (
-    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className={className || "w-6 h-6"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -199,9 +189,9 @@ function LinkIcon() {
   )
 }
 
-function DownloadIcon() {
+function DownloadIcon({ className }: { className?: string }) {
   return (
-    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <svg className={className || "w-5 h-5"} fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         strokeLinecap="round"
         strokeLinejoin="round"

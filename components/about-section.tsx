@@ -14,7 +14,7 @@ export function AboutSection() {
           setIsVisible(true)
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15, rootMargin: "-50px" }
     )
 
     if (sectionRef.current) {
@@ -28,7 +28,7 @@ export function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-24 md:py-32 bg-card relative overflow-hidden"
+      className="py-28 md:py-40 bg-card relative overflow-hidden"
     >
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -36,14 +36,14 @@ export function AboutSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Image */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          {/* Image - shifted slightly left */}
           <div
-            className={`relative transition-all duration-1000 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+            className={`relative transition-all duration-1000 ease-out lg:-ml-8 ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-16"
             }`}
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden img-hover-zoom">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden img-hover-zoom shadow-2xl">
               <Image
                 src="/images/about-section.jpg"
                 alt="Tales for the Tillerman live performance"
@@ -57,8 +57,8 @@ export function AboutSection() {
 
           {/* Content */}
           <div
-            className={`transition-all duration-1000 delay-200 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+            className={`transition-all duration-1000 delay-300 ease-out ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-16"
             }`}
           >
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
@@ -67,7 +67,7 @@ export function AboutSection() {
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 text-balance">
               A Journey Through Sound
             </h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-5 text-muted-foreground leading-relaxed text-lg">
               <p>
                 Tales for the Tillerman is a Berlin-based collective that weaves together 
                 world music, funk, soul, and reggae into a vibrant tapestry of sound. 
@@ -83,7 +83,7 @@ export function AboutSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-10 pt-10 border-t border-border">
+            <div className="grid grid-cols-3 gap-6 mt-12 pt-10 border-t border-border">
               <div>
                 <div className="font-serif text-3xl md:text-4xl text-primary">5</div>
                 <div className="text-sm text-muted-foreground mt-1">Musicians</div>

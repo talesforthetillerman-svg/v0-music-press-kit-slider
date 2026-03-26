@@ -14,10 +14,10 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Parallax */}
+      {/* Background Image with Slower Parallax */}
       <div
-        className="absolute inset-0 z-0"
-        style={{ transform: `translateY(${scrollY * 0.3}px)` }}
+        className="absolute inset-0 z-0 transition-transform duration-100"
+        style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       >
         <Image
           src="/images/band-group.jpg"
@@ -26,19 +26,20 @@ export function HeroSection() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        {/* Logo */}
-        <div className="animate-fade-in mb-8">
+        {/* Transparent Logo - Bigger */}
+        <div className="animate-fade-in mb-10">
           <Image
-            src="/images/logo.jpg"
+            src="/images/logo-transparent.png"
             alt="Tales for the Tillerman Logo"
-            width={180}
-            height={180}
-            className="mx-auto rounded-full shadow-2xl ring-4 ring-foreground/10"
+            width={280}
+            height={280}
+            className="mx-auto drop-shadow-2xl"
+            priority
           />
         </div>
 
@@ -48,7 +49,7 @@ export function HeroSection() {
         </h1>
 
         {/* Subtitle */}
-        <p className="text-lg sm:text-xl text-muted-foreground mb-8 animate-fade-in-up animation-delay-200 max-w-2xl mx-auto">
+        <p className="text-lg sm:text-xl text-muted-foreground mb-10 animate-fade-in-up animation-delay-200 max-w-2xl mx-auto">
           World music, funk, and soul from Berlin
         </p>
 
@@ -61,7 +62,7 @@ export function HeroSection() {
             View Press Kit
           </a>
           <a
-            href="mailto:talesforthetillerman@gmail.com"
+            href="#contact"
             className="px-8 py-4 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-secondary/80 transition-all hover:scale-105 border border-border"
           >
             Book the Band
