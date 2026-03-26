@@ -28,60 +28,60 @@ export function ContactSection() {
     <section
       id="contact"
       ref={sectionRef}
-      className="py-28 md:py-40 relative overflow-hidden min-h-[80vh] flex items-center"
+      className="py-28 md:py-40 relative overflow-hidden min-h-[90vh] flex items-center"
     >
-      {/* Background Image with reduced opacity */}
+      {/* Background Image with blur and reduced opacity */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/manager.png"
+          src="/images/contact-logo.jpg"
           alt=""
           fill
-          className="object-cover object-top"
+          className="object-cover object-center blur-sm scale-105"
         />
-        {/* Dark overlay to ensure text readability */}
+        {/* Dark overlay to ensure text readability - matching About section style */}
         <div className="absolute inset-0 bg-background/85" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background/50" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         {/* Header */}
         <div
-          className={`text-center mb-12 transition-all duration-700 ease-out ${
+          className={`text-center mb-14 transition-all duration-700 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
             Let&apos;s Work Together
           </span>
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-4 text-balance">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
             Book the Band
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-xl">
             Ready to bring the groove to your event? Get in touch with our management for bookings and inquiries.
           </p>
         </div>
 
-        {/* Contact Options */}
+        {/* Contact Options - Larger and more prominent */}
         <div
-          className={`grid sm:grid-cols-2 gap-6 mb-12 transition-all duration-700 delay-200 ease-out ${
+          className={`grid sm:grid-cols-2 gap-8 mb-14 transition-all duration-700 delay-200 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           {/* Email */}
           <a
             href="mailto:talesforthetillerman@gmail.com"
-            className="group p-8 bg-card/90 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] text-center"
+            className="group p-10 bg-card/90 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-              <EmailIcon className="w-8 h-8 text-primary" />
+            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+              <EmailIcon className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="font-serif text-xl md:text-2xl text-foreground mb-2">Email Us</h3>
-            <p className="text-muted-foreground text-sm mb-4">
+            <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-3">Email Us</h3>
+            <p className="text-muted-foreground text-lg mb-5">
               For booking inquiries and collaborations
             </p>
-            <span className="inline-flex items-center gap-2 text-primary font-medium">
+            <span className="inline-flex items-center gap-2 text-primary font-medium text-lg">
               talesforthetillerman@gmail.com
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
@@ -92,42 +92,60 @@ export function ContactSection() {
             href="https://t.me/talesforthetillerman"
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-8 bg-card/90 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] text-center"
+            className="group p-10 bg-card/90 backdrop-blur-sm rounded-2xl border border-border hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] text-center"
           >
-            <div className="w-16 h-16 mx-auto mb-5 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-              <TelegramIcon className="w-8 h-8 text-primary" />
+            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+              <TelegramIcon className="w-10 h-10 text-primary" />
             </div>
-            <h3 className="font-serif text-xl md:text-2xl text-foreground mb-2">Telegram</h3>
-            <p className="text-muted-foreground text-sm mb-4">
+            <h3 className="font-serif text-2xl md:text-3xl text-foreground mb-3">Telegram</h3>
+            <p className="text-muted-foreground text-lg mb-5">
               Quick response for urgent matters
             </p>
-            <span className="inline-flex items-center gap-2 text-primary font-medium">
+            <span className="inline-flex items-center gap-2 text-primary font-medium text-lg">
               @talesforthetillerman
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
             </span>
           </a>
         </div>
 
-        {/* Main CTA Button */}
+        {/* Main CTA Button - Much larger */}
         <div
-          className={`text-center transition-all duration-700 delay-300 ease-out ${
+          className={`text-center mb-12 transition-all duration-700 delay-300 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
           <a
             href="mailto:talesforthetillerman@gmail.com?subject=Booking%20Inquiry"
-            className="inline-flex items-center gap-3 px-12 py-6 bg-primary text-primary-foreground rounded-xl font-semibold text-xl hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/25"
+            className="inline-flex items-center gap-4 px-14 py-7 bg-primary text-primary-foreground rounded-xl font-semibold text-2xl hover:bg-primary/90 transition-all hover:scale-105 shadow-xl shadow-primary/25"
           >
-            <CalendarIcon className="w-6 h-6" />
+            <CalendarIcon className="w-8 h-8" />
             Book Now
           </a>
         </div>
 
+        {/* Animated Banner/GIF - Moved from Live section */}
+        <div
+          className={`transition-all duration-700 delay-400 ease-out ${
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+          }`}
+        >
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl max-w-2xl mx-auto">
+            <Image
+              src="/images/banner.gif"
+              alt="Tales for the Tillerman animated banner"
+              width={600}
+              height={200}
+              className="w-full"
+              unoptimized
+            />
+          </div>
+        </div>
+
         {/* Management Note */}
         <p
-          className={`text-center text-muted-foreground text-sm mt-10 transition-all duration-700 delay-400 ease-out ${
+          className={`text-center text-muted-foreground text-lg mt-10 transition-all duration-700 delay-500 ease-out ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >

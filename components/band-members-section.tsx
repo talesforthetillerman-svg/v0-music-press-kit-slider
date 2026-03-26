@@ -10,6 +10,7 @@ const members = [
     fullName: "Janosch Puhe",
     role: "Guitar & Vocals",
     image: "/images/members/janosch.jpg",
+    fallbackImage: "/images/band-collage.jpg",
     color: "from-amber-500/30",
   },
   {
@@ -18,6 +19,7 @@ const members = [
     fullName: "J.Ma Garcia Lopez",
     role: "Piano, Flute & Vocals",
     image: "/images/members/jma.jpg",
+    fallbackImage: "/images/band-collage.jpg",
     color: "from-teal-500/30",
   },
   {
@@ -26,6 +28,7 @@ const members = [
     fullName: "Otto Lorenz Contreras",
     role: "Bass",
     image: "/images/members/otto.jpg",
+    fallbackImage: "/images/band-collage.jpg",
     color: "from-indigo-500/30",
   },
   {
@@ -34,6 +37,7 @@ const members = [
     fullName: "Robii Crowford",
     role: "Drums",
     image: "/images/members/robii.jpg",
+    fallbackImage: "/images/band-collage.jpg",
     color: "from-rose-500/30",
   },
   {
@@ -42,6 +46,7 @@ const members = [
     fullName: "Tarik Benatmane",
     role: "Percussion",
     image: "/images/members/tarik.jpg",
+    fallbackImage: "/images/band-collage.jpg",
     color: "from-orange-500/30",
   },
 ]
@@ -50,6 +55,7 @@ export function BandMembersSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [isVisible, setIsVisible] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number>(0)
+  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set())
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -67,6 +73,10 @@ export function BandMembersSection() {
 
     return () => observer.disconnect()
   }, [])
+
+  const handleImageError = (index: number) => {
+    setImageErrors((prev) => new Set(prev).add(index))
+  }
 
   return (
     <section
@@ -106,14 +116,15 @@ export function BandMembersSection() {
                 className={`absolute inset-0 transition-all duration-500 ease-in-out ${
                   activeIndex === index
                     ? "opacity-100 scale-100"
-                    : "opacity-0 scale-105"
+                    : "opacity-0 scale-105 pointer-events-none"
                 }`}
               >
                 <Image
-                  src={member.image}
+                  src={imageErrors.has(index) ? member.fallbackImage : member.image}
                   alt={member.fullName}
                   fill
                   className="object-cover"
+                  onError={() => handleImageError(index)}
                 />
                 {/* Gradient overlay at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-card to-transparent" />
@@ -127,11 +138,14 @@ export function BandMembersSection() {
               </div>
             ))}
             
-            {/* Fallback when no image loads */}
+            {/* Fallback background */}
             <div className="absolute inset-0 flex items-center justify-center bg-secondary -z-10">
-              <span className="text-6xl text-muted-foreground/30">
-                {members[activeIndex]?.name.charAt(0)}
-              </span>
+              <Image
+                src="/images/band-collage.jpg"
+                alt="Band collage"
+                fill
+                className="object-cover opacity-50"
+              />
             </div>
           </div>
 

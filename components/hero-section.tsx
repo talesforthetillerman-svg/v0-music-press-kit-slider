@@ -20,7 +20,7 @@ export function HeroSection() {
         style={{ transform: `translateY(${scrollY * 0.15}px)` }}
       >
         <Image
-          src="/images/band-group.jpg"
+          src="/images/band-hero.jpg"
           alt="Tales for the Tillerman performing live"
           fill
           className="object-cover"
@@ -34,11 +34,11 @@ export function HeroSection() {
         {/* Transparent Logo - Bigger */}
         <div className="animate-fade-in mb-10">
           <Image
-            src="/images/logo-transparent.png"
+            src="/images/logo.jpg"
             alt="Tales for the Tillerman Logo"
             width={280}
             height={280}
-            className="mx-auto drop-shadow-2xl"
+            className="mx-auto drop-shadow-2xl rounded-2xl"
             priority
           />
         </div>
