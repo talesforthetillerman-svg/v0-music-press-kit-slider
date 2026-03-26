@@ -33,10 +33,10 @@ export function ContactSection() {
       {/* Background Image with blur and reduced opacity */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/contact-logo.jpg"
+          src="/images/Momo Garcia Manager.png"
           alt=""
           fill
-          className="object-cover object-center blur-sm scale-105"
+          className="object-cover object-center blur-md scale-105"
         />
         {/* Dark overlay to ensure text readability - matching About section style */}
         <div className="absolute inset-0 bg-background/85" />

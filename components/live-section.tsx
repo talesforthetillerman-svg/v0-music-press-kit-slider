@@ -120,7 +120,7 @@ export function LiveSection() {
       {/* Background Image with subtle overlay */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <Image
-          src="/images/live-section.jpg"
+          src="/images/DSC_4710.JPG"
           alt="Tales for the Tillerman live performance"
           fill
           className="object-cover opacity-10"
@@ -140,9 +140,9 @@ export function LiveSection() {
             <span className="text-primary text-sm font-medium tracking-wider uppercase mb-4 block">
               Experience
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
-              Past Concerts
-            </h2>
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-foreground mb-6 text-balance">
+            Our Show History
+          </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
               From intimate club shows to festival main stages, Tales for the Tillerman 
               delivers an unforgettable live experience.
